@@ -3,13 +3,16 @@ import argparse
 from .submodule1 import __main__ as _submodule1_main
 from .submodule2 import __main__ as _submodule2_main
 from .submodule3 import __main__ as _submodule3_main
+from .sharedparser import make_shared_parser
+
 
 parser = argparse.ArgumentParser()
 subparsers = parser.add_subparsers(dest='command', required=True)
 
-subparser1 = subparsers.add_parser("main1")
-subparser2 = subparsers.add_parser("main2")
-subparser3 = subparsers.add_parser("main3")
+sharedparser = make_shared_parser()
+subparser1 = subparsers.add_parser("main1", parents=[sharedparser])
+subparser2 = subparsers.add_parser("main2", parents=[sharedparser])
+subparser3 = subparsers.add_parser("main3", parents=[sharedparser])
 
 # In-place create the fields for each subparser, 
 #   using the parser generators for each module

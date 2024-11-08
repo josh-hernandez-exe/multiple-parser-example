@@ -1,9 +1,12 @@
 import argparse
 
+from ..sharedparser import make_shared_parser
 
 def make_parser(parser: argparse.ArgumentParser = None) -> argparse.ArgumentParser:
     if parser is None:
-        parser = argparse.ArgumentParser()
+        parser = argparse.ArgumentParser(
+            parents=[make_shared_parser()],
+        )
 
     parser.add_argument('--arg31')
     parser.add_argument('--arg32')
