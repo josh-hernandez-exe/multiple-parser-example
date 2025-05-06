@@ -1,6 +1,8 @@
 import argparse
 import logging
 
+from aux_module1 import helper1
+
 from ..sharedparser import make_shared_parser
 
 logger = logging.getLogger(__name__)
@@ -15,15 +17,32 @@ def make_parser(parser: argparse.ArgumentParser = None) -> argparse.ArgumentPars
     parser.add_argument('--arg11')
     parser.add_argument('--arg12')
 
+    parser.add_argument(
+        '--vector',
+        type=int,
+        nargs='*',
+        default=[],
+        action='append',
+    )
+
+    parser.add_argument(
+        '-c',
+        '--count',
+        default=0,
+        action='count',
+    )
 
     return parser
 
 
 def main(args: argparse.Namespace) -> None:
     logger.info('main 1')
-    logger.info(args.arg11)
-    logger.info(args.arg12)
-    # logger.info(args.groups)
+
+    helper1.helper_function1(
+        args.arg11, args.arg12,
+        coordinates=args.vector,
+        count=args.count,
+    )
 
 
 if __name__ == '__main__':

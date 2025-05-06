@@ -56,9 +56,11 @@ if __name__ == '__main__':
 
     # Create filter objects
     filters = [
+        # logging.Filter('main_module'),
         # logging.Filter('main_module.submodule1'),
         # logging.Filter('main_module.submodule2'),
         # logging.Filter('main_module.submodule3'),
+        # logging.Filter('aux_module1'),
     ]
 
     # Add filters to the handlers created by basicConfig

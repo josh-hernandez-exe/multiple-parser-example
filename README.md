@@ -18,3 +18,8 @@ python -m main_module.submodule1 --help
 python -m main_module.submodule2 --help
 python -m main_module.submodule3 --help
 ```
+
+
+# Logging
+
+https://docs.python.org/3/howto/logging-cookbook.html#logging-cookbook
