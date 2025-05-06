@@ -23,7 +23,7 @@ def main(args: argparse.Namespace) -> None:
     logger.info('main 1')
     logger.info(args.arg11)
     logger.info(args.arg12)
-    logger.info(args.groups)
+    # logger.info(args.groups)
 
 
 if __name__ == '__main__':

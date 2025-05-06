@@ -38,23 +38,40 @@ subparser3.set_defaults(main=_submodule3_main.main)
 if __name__ == '__main__':
     args = parser.parse_args()
 
+    # Configure basic logging first
     logging.basicConfig(
         level=logging.getLevelName(args.log_level),
         # https://docs.python.org/3/library/logging.html#logrecord-attributes
         format=' '.join([
             '%(asctime)s',
             '[%(levelname)s]',
-            # '[%(filename)s:%(lineno)d]',
             '[%(pathname)s:%(lineno)d]'
+            # '[%(module)s:%(lineno)d]'
             # '%(process)d-%(thread)d-%(taskName)s',
+            '',
             '%(message)s',
         ]),
-        filters=[
-            # 'module.submodule1.__main__',
-            # 'module.submodule2.__main__',
-            # 'module.submodule3.__main__',
-        ],
+        # Remove the filters argument from here
     )
+
+    # Create filter objects
+    filters = [
+        # logging.Filter('main_module.submodule1'),
+        # logging.Filter('main_module.submodule2'),
+        # logging.Filter('main_module.submodule3'),
+    ]
+
+    # Add filters to the handlers created by basicConfig
+    root_logger = logging.getLogger()
+    if root_logger.handlers:
+        for handler in root_logger.handlers:
+            for f in filters:
+                handler.addFilter(f)
+    else:
+        # Handle the case where basicConfig might not have added a handler (unlikely but possible)
+        # Or configure handlers manually if more control is needed.
+        logger.warning("No handlers found on root logger after basicConfig. Filters not applied.")
+
 
     match args.command:
         case "main1" | "main2" | "main3":
