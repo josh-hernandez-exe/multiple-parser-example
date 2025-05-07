@@ -44,8 +44,6 @@ def make_parser(parser: argparse.ArgumentParser = None) -> argparse.ArgumentPars
         ]),
     )
 
-
-
     return parser
 
 

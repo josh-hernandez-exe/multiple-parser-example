@@ -4,6 +4,7 @@ from main_module.submodule1 import __main__ as submodule1
 
 logger = logging.getLogger(__name__)
 
+
 def main():
     logger.info('random script main')
     submodule1.main(
@@ -16,6 +17,7 @@ def main():
             '--count',
         ])
     )
+
 
 if __name__ == '__main__':
     logging.basicConfig(

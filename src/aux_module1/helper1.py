@@ -2,6 +2,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 def helper_function1(*args, **kwargs):
     logger.critical("This is a critical message from helper_function1")
     logger.error("This is an error message from helper_function1")

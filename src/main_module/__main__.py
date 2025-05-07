@@ -74,8 +74,9 @@ if __name__ == '__main__':
     else:
         # Handle the case where basicConfig might not have added a handler (unlikely but possible)
         # Or configure handlers manually if more control is needed.
-        logger.warning("No handlers found on root logger after basicConfig. Filters not applied.")
-
+        logger.warning(
+            "No handlers found on root logger after basicConfig. Filters not applied."
+        )
 
     match args.command:
         case "main1" | "main2" | "main3":
