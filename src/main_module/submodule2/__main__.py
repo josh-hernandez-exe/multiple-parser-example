@@ -15,6 +15,18 @@ def make_parser(parser: argparse.ArgumentParser = None) -> argparse.ArgumentPars
     parser.add_argument('--arg21')
     parser.add_argument('--arg22')
 
+    parser.add_argument(
+        '--flag',
+        default=False,
+        action='store_true',
+    )
+    parser.add_argument(
+        '--dry-run',
+        dest='should_save',
+        default=True,
+        action='store_false',
+    )
+
     return parser
 
 
@@ -22,6 +34,14 @@ def main(args: argparse.Namespace) -> None:
     logger.info('main 2')
     logger.info(args.arg21)
     logger.info(args.arg22)
+
+    if args.flag:
+        logger.info('Flag is set')
+
+    if args.should_save:
+        logger.info('should save')
+    else:
+        logger.info('should not save (dry run)')
 
 
 if __name__ == '__main__':
