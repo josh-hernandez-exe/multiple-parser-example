@@ -1,6 +1,8 @@
 import argparse
 import logging
 
+from aux_module1 import helper1
+
 from ..sharedparser import make_shared_parser
 
 logger = logging.getLogger(__name__)
@@ -12,15 +14,20 @@ def make_parser(parser: argparse.ArgumentParser = None) -> argparse.ArgumentPars
             parents=[make_shared_parser()],
         )
 
-    parser.add_argument('--arg21')
-    parser.add_argument('--arg22')
+    parser.add_argument('--arg21', help="Command line argument 2-1")
+    parser.add_argument('--arg22', help="Command line argument 2-2")
 
-    parser.add_argument(
+    flag_group = parser.add_argument_group(
+        title='Flag Arguments',
+        description='Arguments that are flags.',
+    )
+
+    flag_group.add_argument(
         '--flag',
         default=False,
         action='store_true',
     )
-    parser.add_argument(
+    flag_group.add_argument(
         '--dry-run',
         dest='should_save',
         default=True,
@@ -32,8 +39,9 @@ def make_parser(parser: argparse.ArgumentParser = None) -> argparse.ArgumentPars
 
 def main(args: argparse.Namespace) -> None:
     logger.info('main 2')
-    logger.info(args.arg21)
-    logger.info(args.arg22)
+    helper1.helper_function1(
+        args.arg21, args.arg22,
+    )
 
     if args.flag:
         logger.info('Flag is set')
