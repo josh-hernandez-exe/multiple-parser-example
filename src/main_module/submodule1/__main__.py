@@ -40,7 +40,7 @@ def main(args: argparse.Namespace) -> None:
 
     helper1.helper_function1(
         args.arg11, args.arg12,
-        coordinates=args.vector,
+        vectors=args.vector,
         count=args.count,
     )
 
@@ -54,7 +54,7 @@ if __name__ == '__main__':
         format=' '.join([
             '%(asctime)s',
             '[%(levelname)s]',
-            '[%(filename)s:%(lineno)d]',
+            '[%(pathname)s:%(lineno)d]',
             # '%(process)d-%(thread)d-%(taskName)s',
             '%(message)s',
         ])

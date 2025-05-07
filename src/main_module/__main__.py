@@ -45,8 +45,10 @@ if __name__ == '__main__':
         format=' '.join([
             '%(asctime)s',
             '[%(levelname)s]',
-            '[%(pathname)s:%(lineno)d]'
-            # '[%(module)s:%(lineno)d]'
+            '[%(name)s:%(lineno)d]',
+            # '[%(pathname)s:%(lineno)d]',
+            # '[%(filename)s:%(lineno)d]',
+            # '[%(module)s:%(lineno)d]',
             # '%(process)d-%(thread)d-%(taskName)s',
             '',
             '%(message)s',

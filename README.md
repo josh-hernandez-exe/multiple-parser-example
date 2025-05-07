@@ -19,6 +19,36 @@ python -m main_module.submodule2 --help
 python -m main_module.submodule3 --help
 ```
 
+# Example Comands
+
+```bash
+python -m main_module.submodule1 \
+    --arg11 qwer --arg12 asdf
+```
+
+```bash
+python -m main_module.submodule2 \
+    --arg21 zxcv --arg22 uiop \
+    --flag --dry-run
+```
+
+
+```bash
+python -m main_module.submodule3 \
+    --arg31 hjlk --arg32 vbnm
+```
+
+```bash
+python -m main_module all \
+    --arg11 qwer --arg12 asdf \
+    --arg21 zxcv --arg22 uiop \
+    --arg31 hjlk --arg32 vbnm
+```
+
+```bash
+python scripts/random_script.py
+```
+
 
 # Logging
 
